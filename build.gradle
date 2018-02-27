@@ -1,0 +1,51 @@
+apply plugin: 'org.example.greeting'
+apply plugin: 'java'
+
+hello {
+    message 'robin'
+    recipient 'gradle'
+}
+
+
+greeting {
+    extMessage 'xxxxxx'
+    extRecipient '234234'
+    innerExtension {
+        name 'innerExtension'
+    }
+}
+
+def tgt = file('./target')
+
+write {
+    clearAll true
+    targetDir tgt
+    generateAll true
+}
+
+bookManager {
+    libraries {
+        Nanjing {
+            libraryDetail "NJ Lib"
+            bookCount 34
+        }
+        Wuhan {
+            libraryDetail "WH Lib"
+            bookCount 12
+        }
+    }
+    books {
+        thinkingInJava {
+            bookLocation libraries.Nanjing
+        }
+        thinkingInJava1 {
+            bookLocation libraries.Wuhan
+        }
+        thinkingInJava2 {
+            bookLocation libraries.Nanjing
+        }
+        thinkingInJava3 {
+            bookLocation libraries.Wuhan
+        }
+    }
+}
